@@ -85,6 +85,8 @@ The core logic is located in `src/sharp`. Here is an overview of the key compone
   - `camera.py`: Camera projection and transformation utilities.
   - `gsplat.py`: Wrappers for the rasterization backend.
 
+For a detailed explanation of the network pipeline, please refer to [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
+
 ## Evaluation
 
 Please refer to the paper for both quantitative and qualitative evaluations.
