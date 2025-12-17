@@ -66,6 +66,25 @@ sharp predict -i /path/to/input/images -o /path/to/output/gaussians --render
 sharp render -i /path/to/output/gaussians -o /path/to/output/renderings
 ```
 
+## Code Structure
+
+The core logic is located in `src/sharp`. Here is an overview of the key components:
+
+- **CLI (`src/sharp/cli`)**: Entry points for the command-line interface.
+  - `predict.py`: Handles the end-to-end pipeline from input image to 3D Gaussian prediction.
+  - `render.py`: Manages the rendering of predicted Gaussians, including camera trajectory generation.
+
+- **Models (`src/sharp/models`)**: Defines the neural network architectures.
+  - `predictor.py`: Contains `RGBGaussianPredictor`, the main class combining depth estimation and Gaussian regression.
+  - `monodepth.py`: Modules for monocular depth estimation, essential for geometry recovery.
+  - `encoders/` & `decoders/`: Implementations of various backbones (e.g., ViT, UNet) used for feature extraction and parameter regression.
+  - `gaussian_decoder.py`: Specifically handles the decoding of latent features into 3D Gaussian attributes (position, rotation, scale, opacity, SH coefficients).
+
+- **Utils (`src/sharp/utils`)**: Helper functions and data structures.
+  - `gaussians.py`: Defines the `Gaussians3D` class for manipulating 3D Gaussian data.
+  - `camera.py`: Camera projection and transformation utilities.
+  - `gsplat.py`: Wrappers for the rasterization backend.
+
 ## Evaluation
 
 Please refer to the paper for both quantitative and qualitative evaluations.
