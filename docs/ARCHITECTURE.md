@@ -111,7 +111,7 @@ graph TD
     BaseG --> Composer[Gaussian Composer]
     Deltas --> Composer
 
-    Composer --> GaussNDC[Gaussians (NDC)]
+    Composer --> GaussNDC["Gaussians (NDC)"]
     GaussNDC --> Unproj[Unprojection]
     Unproj --> Output[Metric 3D Gaussians]
 ```
